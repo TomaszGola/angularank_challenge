@@ -1,5 +1,15 @@
+import {
+  FETCH_SIGNIN__SUCCESS,
+  FETCH_SIGNIN__FAILURE
+} from './actionTypes'
+
 const initialState = {
-  userDate: {}
+  username: null,
+  password: null,
+  logInSuccess: false,
+  auth: null,
+  userInfo: null,
+  error: null
 }
 
 export default (state = initialState, action ) => {
@@ -9,6 +19,19 @@ export default (state = initialState, action ) => {
         username: action.username,
         password: action.password
       }
+    case FETCH_SIGNIN__SUCCESS:
+      return{
+        ...state,
+        logInSuccess: true,
+        userInfo: action.userInfo,
+        auth: action.auth
+      }
+    case FETCH_SIGNIN__FAILURE:
+      return{
+        ...state,
+        error: action.error
+      }
+
     default : return state
   }
 }

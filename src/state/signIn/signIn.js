@@ -1,7 +1,12 @@
+import {
+  FETCH_SIGNIN__SUCCESS,
+  FETCH_SIGNIN__FAILURE
+} from './actionTypes'
+
 export const signIn = (username, password) => {
   return (dispatch) => {
+
     const auth = window.btoa(username + ':' + password)
-    console.log(auth)
 
     const init = {
       'method':'GET',
@@ -14,14 +19,24 @@ export const signIn = (username, password) => {
       .then(
         resp => {
           if (resp.status === 200) {
-            console.log('udalo sie')
+            resp.json().then(user =>
+            dispatch({
+              type:FETCH_SIGNIN__SUCCESS,
+              auth: init,
+              userInfo: user
+            })
+            )
           }
           else {
-            console.log('nie udalo sie')
+            resp.json().then(err =>
+              dispatch({
+                type:FETCH_SIGNIN__FAILURE,
+                error: err
+              })
+            )
           }
         }
       )
-
   }
 }
 
