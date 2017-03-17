@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Form, FormGroup, FormControl, ControlLabel,  Button} from 'react-bootstrap';
 
+import {signIn} from '../../state/signIn/signIn'
+
 const mapDispatchToProps = dispatch => ({
-  enterDateToStore: (username, password) => dispatch({type: 'STORE_USER_DATE', username:username, password:password})
+  enterDateToStore: (username, password) => dispatch({type: 'STORE_USER_DATE', username:username, password:password}),
+  signIn: (username, password) => dispatch(signIn(username,password))
 })
 
 class SignIn extends Component {
@@ -18,6 +21,7 @@ class SignIn extends Component {
     this.enterDate = e => {
       e.preventDefault()
       this.props.enterDateToStore(this.state.username, this.state.password)
+      this.props.signIn(this.state.username, this.state.password)
     }
   }
 
