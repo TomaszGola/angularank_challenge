@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+import {Link} from "react-router";
 import {Form, FormGroup, FormControl, ControlLabel,  Button} from 'react-bootstrap';
 
 import {signIn} from '../../state/signIn/signIn'
+
+const mapStateToProps = state => ({
+  logInSuccess: state.userDate.logInSuccess,
+  error: state.userDate.error
+})
 
 const mapDispatchToProps = dispatch => ({
   enterDateToStore: (username, password) => dispatch({type: 'STORE_USER_DATE', username:username, password:password}),
@@ -64,9 +70,28 @@ class SignIn extends Component {
           <a href="https://github.com/join">
             <Button bsStyle="danger">Sign up</Button>
           </a>
+
+          {
+            this.props.logInSuccess ?
+              <div>
+                <p>log in success!</p>
+                <Link to="/list">
+                  <Button bsStyle="success">List</Button>
+                </Link>
+              </div>
+              :
+              this.props.error === null ?
+                <p>you have to log</p> :
+                <div>
+                  <p>Forgot password?</p>
+                  <a href="https://github.com/password_reset">
+                    <Button>reset password</Button>
+                  </a>
+                </div>
+          }
         </Form>
     )
   }
 }
 
-export default connect(null, mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

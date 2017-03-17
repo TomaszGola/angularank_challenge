@@ -6,7 +6,7 @@ import {
 const initialState = {
   username: null,
   password: null,
-  logInSuccess: false,
+  logInSuccess: null,
   auth: null,
   userInfo: null,
   error: null
@@ -29,6 +29,7 @@ export default (state = initialState, action ) => {
     case FETCH_SIGNIN__FAILURE:
       return{
         ...state,
+        logInSuccess: false,
         error: action.error
       }
 

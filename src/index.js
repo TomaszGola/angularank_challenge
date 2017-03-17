@@ -10,7 +10,9 @@ import "bootstrap/dist/css/bootstrap-theme.css";
 
 import App from './components/App/App';
 import SignIn from './components/SignIn/SignIn';
-import NotFound from './components/NotFound/NotFound'
+import List from './components/List/List';
+import NotFound from './components/NotFound/NotFound';
+
 
 import './index.css';
 
@@ -19,6 +21,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={App}/>
       <Route path="/login" component={SignIn}/>
+      <Route path="/list" component={List}/>
       <Route path="*" component={NotFound}/>
     </Router>
   </Provider>
