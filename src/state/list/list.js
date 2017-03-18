@@ -13,10 +13,20 @@ export const fetchAngularRep = (auth) => {
     fetch('https://api.github.com/orgs/angular/repos', auth)
       .then(
         resp => {
-          resp.status === 200 ?
-            console.log('udało się') :
+         if (resp.status === 200)
+            {
+              resp.json().then(
+                repos =>
+                dispatch({
+                  type: FETCH_ANG_REP__SUCCESS,
+                  anguRepos: repos
+                })
+              )
+              console.log('udało się')
+            }
+            else {
             console.log('wystąpił błąd')
-        }
+        }}
       )
   }
 };

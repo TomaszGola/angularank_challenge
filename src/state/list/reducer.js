@@ -8,13 +8,15 @@ import {
 } from './actionTypes'
 
 const initialState = {
-
+  anguRepos: null
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ANG_REP__SUCCESS:
-      return {}
+      return {
+        anguRepos: action.anguRepos
+      }
     case FETCH_ANG_REP__FAILURE:
       return {}
     case FETCH_REP_IN_ANG__SUCCESS:
