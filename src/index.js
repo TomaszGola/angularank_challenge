@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap-theme.css";
 
 import App from './components/App/App';
 import SignIn from './components/SignIn/SignIn';
-import List from './components/List/List';
+import AuthList from './components/AuthList/AuthList';
 import NotFound from './components/NotFound/NotFound';
 
 
@@ -21,7 +21,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={App}/>
       <Route path="/login" component={SignIn}/>
-      <Route path="/list" component={List}/>
+      <Route path="/list" component={AuthList}/>
       <Route path="*" component={NotFound}/>
     </Router>
   </Provider>

@@ -32,7 +32,6 @@ export default (state = initialState, action ) => {
         logInSuccess: false,
         error: action.error
       }
-
     default : return state
   }
 }
