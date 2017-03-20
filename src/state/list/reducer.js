@@ -8,7 +8,8 @@ import {
 } from './actionTypes'
 
 const initialState = {
-  anguRepos: null
+  anguRepos: null,
+  repInAng: []
 }
 
 export default (state = initialState, action) => {
@@ -20,7 +21,9 @@ export default (state = initialState, action) => {
     case FETCH_ANG_REP__FAILURE:
       return {}
     case FETCH_REP_IN_ANG__SUCCESS:
-      return {}
+      return {
+        repInAng: state.repInAng.concat(action.repInAng)
+      }
     case FETCH_REP_IN_ANG__FAILURE:
       return {}
     case FETCH_CONT__SUCCESS:
