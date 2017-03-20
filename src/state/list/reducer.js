@@ -9,7 +9,8 @@ import {
 
 const initialState = {
   anguRepos: null,
-  repInAng: []
+  repInAng: [],
+  contr: []
 }
 
 export default (state = initialState, action) => {
@@ -27,7 +28,9 @@ export default (state = initialState, action) => {
     case FETCH_REP_IN_ANG__FAILURE:
       return {}
     case FETCH_CONT__SUCCESS:
-      return {}
+      return {
+        contr: state.contr.concat(action.contr)
+      }
     case FETCH_CONT__FAILURE:
       return {}
     default :

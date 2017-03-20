@@ -7,6 +7,31 @@ import {
   FETCH_CONT__FAILURE
 } from './actionTypes'
 
+const fetchContr = (repInAng, auth) => {
+  return (dispatch) => {
+   repInAng.map(contr =>
+    fetch(contr.url, auth)
+      .then(
+        resp => {
+          if (resp.status === 200)
+          {
+            resp.json().then(
+              contr =>
+                dispatch(
+                  {
+                    type: FETCH_CONT__SUCCESS,
+                    contr: contr
+                  }),
+            )
+            console.log('udało się contr')
+          }
+          else {
+            console.log('wystąpił błąd w contr')
+          }}
+      )
+   )
+  }
+}
 
 const fetchRepos = (repos, auth) => {
   return (dispatch) => {
@@ -19,6 +44,7 @@ const fetchRepos = (repos, auth) => {
           resp.json().then(
             repInAng =>
               dispatch(
+                fetchContr(repInAng,auth),
                 {
                   type: FETCH_REP_IN_ANG__SUCCESS,
                   repInAng: repInAng
