@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+import {Link} from "react-router";
 
 import { fetchAngularRep } from '../../state/list/list'
 
 const mapStateToProps = state => ({
-  auth: state.userDate.auth
+  auth: state.userDate.auth,
+  contr: state.angRepo.contr
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -22,6 +24,12 @@ class List extends Component {
     return (
       <div>
         <p>tutaj będzie lista</p>
+        {this.props.contr.map(
+          one =>
+            <Link to={"/list/"+ one.login}>
+              <p>{one.login}</p>
+            </Link>
+        )}
       </div>
     )
   }
