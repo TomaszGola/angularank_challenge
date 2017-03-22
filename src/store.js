@@ -4,11 +4,13 @@ import thunkMiddleware from 'redux-thunk'
 import userDateReducer from './state/signIn/reducer.js'
 import angReposReducer from './state/list/reducer.js'
 import contrS_reposReducer from './state/contributor/reducer'
+import repoContributors from './state/repoContributors/reducer'
 
 const reducer = combineReducers({
   userDate: userDateReducer,
   angRepo: angReposReducer,
-  contrS_repos: contrS_reposReducer
+  contrS_repos: contrS_reposReducer,
+  repoContr: repoContributors
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
