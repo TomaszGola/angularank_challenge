@@ -4,13 +4,15 @@ import {
   FETCH_REP_IN_ANG__SUCCESS,
   FETCH_REP_IN_ANG__FAILURE,
   FETCH_CONT__SUCCESS,
-  FETCH_CONT__FAILURE
+  FETCH_CONT__FAILURE,
+  DELETE_REPET
 } from './actionTypes'
 
 const initialState = {
   anguRepos: null,
   repInAng: [],
-  contr: []
+  contr: [],
+  deleted: []
 }
 
 export default (state = initialState, action) => {
@@ -33,6 +35,10 @@ export default (state = initialState, action) => {
       }
     case FETCH_CONT__FAILURE:
       return {}
+    case DELETE_REPET:
+      return {
+        deleted: state.contr
+      }
     default :
       return state
   }

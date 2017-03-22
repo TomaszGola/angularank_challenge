@@ -6,13 +6,13 @@ import SignIn from '../SignIn/SignIn';
 const mapStateToProps = state => ({
   auth: state.userDate.auth,
   logInSuccess: state.userDate.logInSuccess,
-  contr: state.angRepo.contr
+  deleted: state.angRepo.deleted
 })
 
 class Contributor extends Component {
   render() {
 
-    const oneContr = this.props.contr.find(one =>
+    const oneContr = this.props.deleted.find(one =>
     one.login === this.props.params.contr
     )
 

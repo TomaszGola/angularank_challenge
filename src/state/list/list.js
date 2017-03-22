@@ -4,7 +4,8 @@ import {
   FETCH_REP_IN_ANG__SUCCESS,
   FETCH_REP_IN_ANG__FAILURE,
   FETCH_CONT__SUCCESS,
-  FETCH_CONT__FAILURE
+  FETCH_CONT__FAILURE,
+  DELETE_REPET
 } from './actionTypes'
 
 const fetchContr = (repInAng, auth) => {
@@ -86,3 +87,22 @@ export const fetchAngularRep = (auth) => {
       )
   }
 };
+
+export const deleteRepetitions = (contr) => {
+  return (dispatch) => {
+    contr.sort((a, b) => a.login.localeCompare(b.login))
+    contr.map(one => one.count = 1)
+    for (let i = 2; i < contr.length;) {
+      if (contr[i - 1].login === contr[i].login) {
+        contr[i].count = contr[i - 1].count + 1
+        contr.splice(i - 1, 1)
+      } else {
+        i += 1
+      }
+    }
+    dispatch({
+      type: DELETE_REPET,
+      deleted: contr
+    })
+  }
+}
