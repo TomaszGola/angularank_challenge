@@ -13,7 +13,7 @@ import SignIn from './components/SignIn/SignIn';
 import AuthList from './components/AuthList/AuthList';
 import NotFound from './components/NotFound/NotFound';
 import Contributor from './components/Contributor/Contributor'
-
+import RepoContributors from './components/RepoContributors/RepoContributors'
 
 import './index.css';
 
@@ -24,6 +24,7 @@ ReactDOM.render(
       <Route path="/login" component={SignIn}/>
       <Route path="/list" component={AuthList}/>
       <Route path="/list/:contr" component={Contributor}/>
+      <Route path="/list/:contr/:repoName" component={RepoContributors}/>
       <Route path="*" component={NotFound}/>
     </Router>
   </Provider>

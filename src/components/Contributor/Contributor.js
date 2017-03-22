@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+import {Link} from "react-router";
 
 import {fetchContrS_Repos} from '../../state/contributor/contributor'
 
@@ -47,9 +48,11 @@ class Contributor extends Component {
               {
                 this.props.contrS_rep.map(
                   contrOne =>
-                  <li key={contrOne.id}>
-                    {contrOne.name}
-                  </li>
+                  <Link key={contrOne.id} to={"/list/"+this.state.oneContribu.login+'/'+contrOne.name}>
+                    <li>
+                      {contrOne.name}
+                    </li>
+                  </Link>
                 )
               }
             </div>
