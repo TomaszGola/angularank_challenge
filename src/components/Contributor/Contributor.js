@@ -1,28 +1,57 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 
+import {fetchContrS_Repos} from '../../state/contributor/contributor'
+
 import SignIn from '../SignIn/SignIn';
 
 const mapStateToProps = state => ({
   auth: state.userDate.auth,
   logInSuccess: state.userDate.logInSuccess,
-  deleted: state.angRepo.deleted
+  deleted: state.angRepo.deleted,
+  contrS_rep: state.contrS_repos.contrS_rep
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchContrS_Repos: (oneContr, auth) => dispatch(fetchContrS_Repos(oneContr, auth))
 })
 
 class Contributor extends Component {
+  constructor(){
+    super()
+
+    this.state = {
+      oneContribu: null
+    }
+
+    this.fetchContributorS_repos = () =>{
+      const oneContr = this.props.deleted.find(one =>
+      one.login === this.props.params.contr);
+      this.setState({oneContribu:oneContr});
+      this.props.fetchContrS_Repos(oneContr, this.props.auth)
+    }
+  }
+
+  componentWillMount(){
+    this.fetchContributorS_repos()
+  }
+
   render() {
-
-    const oneContr = this.props.deleted.find(one =>
-    one.login === this.props.params.contr
-    )
-
     return (
       <div>
         {
           this.props.logInSuccess ?
             <div>
-              <p>{oneContr.login}</p>
-              <p>{oneContr.id}</p>
+              <p>{this.state.oneContribu.login}</p>
+              <p>{this.state.oneContribu.id}</p>
+              {
+                this.props.contrS_rep.map(
+                  contrOne =>
+                  <li key={contrOne.id}>
+                    {contrOne.name}
+                  </li>
+                )
+              }
             </div>
             :
             <div>
@@ -36,4 +65,4 @@ class Contributor extends Component {
 
 }
 
-export default connect(mapStateToProps, null)(Contributor)
+export default connect(mapStateToProps, mapDispatchToProps)(Contributor)

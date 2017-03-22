@@ -1,0 +1,2 @@
+export const FETCH_CONTR_S_REPOS__SUCCESS = 'contributor/FETCH_CONTR_S_REPOS__SUCCESS'
+export const FETCH_CONTR_S_REPOS__FAILURE = 'contributor/FETCH_CONTR_S_REPOS__FAILURE'
