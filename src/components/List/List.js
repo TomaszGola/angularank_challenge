@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import {Link} from "react-router";
 import {ButtonGroup, Button, DropdownButton, MenuItem} from 'react-bootstrap'
 
+import NavBar from '../NavBar/NavBar'
+
 import { fetchAngularRep, deleteRepetitions } from '../../state/list/list'
 
 
@@ -68,6 +70,7 @@ class List extends Component {
   render() {
     return (
       <div>
+        <NavBar/>
         <p>tutaj będzie lista</p>
         <ButtonGroup>
         <Button onClick={this.fetch}>

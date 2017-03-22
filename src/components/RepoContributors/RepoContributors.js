@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from "react-router";
+import {Button} from 'react-bootstrap'
 
 import {fetchReposContributors} from '../../state/repoContributors/repoContributors'
 
-import SignIn from '../SignIn/SignIn';
+import NavBar from '../NavBar/NavBar'
 
 const mapStateToProps = state => ({
   auth: state.userDate.auth,
@@ -42,6 +44,7 @@ class RepoContributors extends Component {
         {
           this.props.logInSuccess ?
             <div>
+              <NavBar/>
               <p>{this.state.oneRepo.name}</p>
               {
                 this.props.repoContributors.map(
@@ -54,7 +57,9 @@ class RepoContributors extends Component {
             </div>:
             <div>
               <p>to see list you have to log in</p>
-              <SignIn/>
+              <Link to="/login">
+                <Button bsStyle="success">Sign in</Button>
+              </Link>
             </div>
         }
       </div>

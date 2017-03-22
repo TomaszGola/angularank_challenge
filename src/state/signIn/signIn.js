@@ -1,6 +1,7 @@
 import {
   FETCH_SIGNIN__SUCCESS,
-  FETCH_SIGNIN__FAILURE
+  FETCH_SIGNIN__FAILURE,
+  SIGN_OUT
 } from './actionTypes'
 
 export const signIn = (username, password) => {
@@ -40,3 +41,10 @@ export const signIn = (username, password) => {
   }
 }
 
+export const signOut = () =>{
+  return (dispatch) => {
+    dispatch({
+      type:SIGN_OUT
+    })
+  }
+}

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Link} from "react-router";
+import {Button} from 'react-bootstrap';
+
+import NavBar from '../NavBar/NavBar'
 
 import {fetchContrS_Repos} from '../../state/contributor/contributor'
 
@@ -43,6 +46,7 @@ class Contributor extends Component {
         {
           this.props.logInSuccess ?
             <div>
+              <NavBar/>
               <p>{this.state.oneContribu.login}</p>
               <p>{this.state.oneContribu.id}</p>
               {
@@ -59,7 +63,9 @@ class Contributor extends Component {
             :
             <div>
               <p>to see list you have to log in</p>
-              <SignIn/>
+              <Link to="/login">
+                <Button bsStyle="success">Sign in</Button>
+              </Link>
             </div>
         }
       </div>

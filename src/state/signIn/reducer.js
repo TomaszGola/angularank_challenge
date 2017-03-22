@@ -1,6 +1,7 @@
 import {
   FETCH_SIGNIN__SUCCESS,
-  FETCH_SIGNIN__FAILURE
+  FETCH_SIGNIN__FAILURE,
+  SIGN_OUT
 } from './actionTypes'
 
 const initialState = {
@@ -18,6 +19,16 @@ export default (state = initialState, action ) => {
       return {
         username: action.username,
         password: action.password
+      }
+    case SIGN_OUT:
+      return {
+        ...state,
+        username: null,
+        password: null,
+        logInSuccess: null,
+        auth: null,
+        userInfo: null,
+        error: null
       }
     case FETCH_SIGNIN__SUCCESS:
       return{

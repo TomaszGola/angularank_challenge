@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+import {Link} from "react-router";
+import {Button} from 'react-bootstrap'
 
-import SignIn from '../SignIn/SignIn';
+
 import List from '../List/List'
 
 
@@ -22,7 +24,9 @@ class AuthList extends Component {
             :
             <div>
               <p>to see list you have to log in</p>
-              <SignIn/>
+              <Link to="/login">
+                <Button bsStyle="success">Sign in</Button>
+              </Link>
             </div>
         }
       </div>

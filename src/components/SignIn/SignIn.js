@@ -81,7 +81,7 @@ class SignIn extends Component {
               </div>
               :
               this.props.error === null ?
-                <p>you have to log</p> :
+                <span/> :
                 <div>
                   <p>Forgot password?</p>
                   <a href="https://github.com/password_reset">
