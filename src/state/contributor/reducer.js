@@ -4,10 +4,11 @@ import {
 } from './actionTypes'
 
 const initialState = {
-  contrS_rep: []
+  contrS_rep: [],
+  error: []
 }
 
-export default ( state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_CONTR_S_REPOS__SUCCESS:
       return {
@@ -15,7 +16,9 @@ export default ( state = initialState, action) => {
         contrS_rep: action.contrS_rep
       }
     case FETCH_CONTR_S_REPOS__FAILURE:
-      return{}
+      return {
+        error: state.error.concat(action.error)
+      }
     default :
       return state
   }

@@ -10,7 +10,7 @@ export const signIn = (username, password) => {
     const auth = window.btoa(username + ':' + password)
 
     const init = {
-      'method':'GET',
+      'method': 'GET',
       'headers': {
         'authorization': 'Basic ' + auth
       }
@@ -21,17 +21,17 @@ export const signIn = (username, password) => {
         resp => {
           if (resp.status === 200) {
             resp.json().then(user =>
-            dispatch({
-              type:FETCH_SIGNIN__SUCCESS,
-              auth: init,
-              userInfo: user
-            })
+              dispatch({
+                type: FETCH_SIGNIN__SUCCESS,
+                auth: init,
+                userInfo: user
+              })
             )
           }
           else {
             resp.json().then(err =>
               dispatch({
-                type:FETCH_SIGNIN__FAILURE,
+                type: FETCH_SIGNIN__FAILURE,
                 error: err
               })
             )
@@ -41,10 +41,10 @@ export const signIn = (username, password) => {
   }
 }
 
-export const signOut = () =>{
+export const signOut = () => {
   return (dispatch) => {
     dispatch({
-      type:SIGN_OUT
+      type: SIGN_OUT
     })
   }
 }

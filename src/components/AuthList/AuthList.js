@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {Link} from "react-router";
-import {Button} from 'react-bootstrap'
-
 
 import List from '../List/List'
-
+import NotFound from '../NotFound/NotFound'
 
 const mapStateToProps = state => ({
   logInSuccess: state.userDate.logInSuccess,
 })
-
 
 class AuthList extends Component {
   render() {
@@ -18,16 +14,9 @@ class AuthList extends Component {
       <div>
         {
           this.props.logInSuccess ?
-            <div>
-              <List/>
-            </div>
+            <List/>
             :
-            <div>
-              <p>to see list you have to log in</p>
-              <Link to="/login">
-                <Button bsStyle="success">Sign in</Button>
-              </Link>
-            </div>
+            <NotFound/>
         }
       </div>
     )

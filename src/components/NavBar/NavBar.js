@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Navbar, NavDropdown, MenuItem, Nav } from 'react-bootstrap'
+import {Navbar, Nav, NavItem, Image} from 'react-bootstrap'
 
 import SignOut from '../SignOut/SignOut'
 
@@ -9,25 +9,21 @@ const mapStateToProps = state => ({
 })
 
 class NavBar extends Component {
-  render(){
-    return(
+  render() {
+    return (
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            {this.props.userInfo.login}
+            <Image src={this.props.userInfo.avatar_url}/>
           </Navbar.Brand>
           <Navbar.Toggle/>
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-          <NavDropdown title="Dropdown" id="dropdown">
-            <MenuItem>
+            <NavItem href={this.props.userInfo.html_url} target="blank">
               {this.props.userInfo.login}
-            </MenuItem>
-            <MenuItem>
-              <SignOut/>
-            </MenuItem>
-          </NavDropdown>
+            </NavItem>
+            <NavItem><SignOut/></NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

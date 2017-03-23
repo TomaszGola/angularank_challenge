@@ -13,7 +13,7 @@ const initialState = {
   error: null
 }
 
-export default (state = initialState, action ) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case 'STORE_USER_DATE':
       return {
@@ -31,18 +31,19 @@ export default (state = initialState, action ) => {
         error: null
       }
     case FETCH_SIGNIN__SUCCESS:
-      return{
+      return {
         ...state,
         logInSuccess: true,
         userInfo: action.userInfo,
         auth: action.auth
       }
     case FETCH_SIGNIN__FAILURE:
-      return{
+      return {
         ...state,
         logInSuccess: false,
         error: action.error
       }
-    default : return state
+    default :
+      return state
   }
 }

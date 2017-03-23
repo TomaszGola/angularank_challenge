@@ -15,12 +15,17 @@ export const fetchReposContributors = (repo, auth) => {
                   {
                     type: FETCH_REPO_CONTRIBUTORS__SUCCESS,
                     repoContributors: repoContributors
-                  }),
+                  }
+                ),
             )
-            console.log('udało się repo contributors')
           }
           else {
-            console.log('wystąpił błąd w repo contributors')
+            dispatch(
+              {
+                type: FETCH_REPO_CONTRIBUTORS__FAILURE,
+                error: resp
+              }
+            )
           }
         }
       )

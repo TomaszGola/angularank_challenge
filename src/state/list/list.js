@@ -21,12 +21,17 @@ const fetchContr = (repInAng, auth) => {
                     {
                       type: FETCH_CONT__SUCCESS,
                       contr: contr
-                    }),
+                    }
+                  ),
               )
-              console.log('udało się contr')
             }
             else {
-              console.log('wystąpił błąd w contr')
+              dispatch(
+                {
+                  type: FETCH_CONT__FAILURE,
+                  error: resp
+                }
+              )
             }
           }
         )
@@ -44,17 +49,21 @@ const fetchRepos = (repos, auth) => {
               resp.json().then(
                 repInAng =>
                   dispatch(
-                    fetchContr(repInAng, auth)
-                    ,
+                    fetchContr(repInAng, auth),
                     {
                       type: FETCH_REP_IN_ANG__SUCCESS,
                       repInAng: repInAng
-                    }),
+                    }
+                  ),
               )
-              console.log('udało się rep in ang')
             }
             else {
-              console.log('wystąpił błąd w rep in ang')
+              dispatch(
+                {
+                  type: FETCH_REP_IN_ANG__FAILURE,
+                  error: resp
+                }
+              )
             }
           }
         )
@@ -76,12 +85,17 @@ export const fetchAngularRep = (auth) => {
                   {
                     type: FETCH_ANG_REP__SUCCESS,
                     anguRepos: repos
-                  }),
+                  }
+                ),
             )
-            console.log('udało się')
           }
           else {
-            console.log('wystąpił błąd')
+            dispatch(
+              {
+                type: FETCH_ANG_REP__FAILURE,
+                error: resp
+              }
+            )
           }
         }
       )

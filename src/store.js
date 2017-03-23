@@ -1,4 +1,4 @@
-import { compose, createStore, combineReducers, applyMiddleware } from 'redux'
+import {compose, createStore, combineReducers, applyMiddleware} from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
 import userDateReducer from './state/signIn/reducer.js'

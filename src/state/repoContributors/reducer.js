@@ -10,12 +10,14 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_REPO_CONTRIBUTORS__SUCCESS:
-      return{
+      return {
         ...state,
         repoContributors: action.repoContributors
       }
     case FETCH_REPO_CONTRIBUTORS__FAILURE:
-      return{}
+      return {
+        error: state.error.concat(action.error)
+      }
     default:
       return state
   }

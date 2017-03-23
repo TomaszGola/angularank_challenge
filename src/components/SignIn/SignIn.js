@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Link} from "react-router";
-import {Form, FormGroup, FormControl, ControlLabel,  Button} from 'react-bootstrap';
+import { Form, FormGroup, FormControl, ControlLabel, Button, Grid} from 'react-bootstrap';
 
 import {signIn} from '../../state/signIn/signIn'
 
@@ -11,15 +11,15 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  enterDateToStore: (username, password) => dispatch({type: 'STORE_USER_DATE', username:username, password:password}),
-  signIn: (username, password) => dispatch(signIn(username,password))
+  enterDateToStore: (username, password) => dispatch({type: 'STORE_USER_DATE', username: username, password: password}),
+  signIn: (username, password) => dispatch(signIn(username, password))
 })
 
 class SignIn extends Component {
-  constructor(){
+  constructor() {
     super()
 
-    this.state= {
+    this.state = {
       username: '',
       password: ''
     }
@@ -31,13 +31,13 @@ class SignIn extends Component {
     }
   }
 
-  render(){
+  render() {
     return (
-        <Form inline>
+      <Grid>
+        <Form horizontal>
           <FormGroup controlId="formInlineName">
             <ControlLabel>Username</ControlLabel>
             {' '}
-
             <FormControl
               type="text"
               placeholder="username"
@@ -52,7 +52,6 @@ class SignIn extends Component {
           <FormGroup controlId="formInlinePassword">
             <ControlLabel>Password</ControlLabel>
             {' '}
-
             <FormControl
               type="password"
               placeholder="password"
@@ -61,35 +60,37 @@ class SignIn extends Component {
                   password: e.target.value
                 })}
             />
-
           </FormGroup>
           {' '}
-          <Button type="submit" bsStyle="success" onClick={this.enterDate}>
+          <Button type="submit" bsStyle="primary" onClick={this.enterDate}>
             Sign in
           </Button>
-          <a href="https://github.com/join">
-            <Button bsStyle="danger">Sign up</Button>
-          </a>
-
+          {' '}
+          <Button bsStyle="primary" href="https://github.com/join" target="blank">
+            Sign up
+          </Button>
           {
-            this.props.logInSuccess ?
+            this.props.logInSuccess
+              ?
               <div>
-                <p>log in success!</p>
+                <p>Log in success! Now you can go to list site by clicking button.</p>
                 <Link to="/list">
                   <Button bsStyle="success">List</Button>
                 </Link>
               </div>
               :
               this.props.error === null ?
-                <span/> :
+                <span/>
+                :
                 <div>
                   <p>Forgot password?</p>
-                  <a href="https://github.com/password_reset">
-                    <Button>reset password</Button>
-                  </a>
+                  <Button bsStyle="warning" href="https://github.com/password_reset" target="blank">
+                    Reset password
+                  </Button>
                 </div>
           }
         </Form>
+      </Grid>
     )
   }
 }

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {Button} from 'react-bootstrap';
 
 import {signOut} from '../../state/signIn/signIn'
 
@@ -14,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class SignOut extends Component {
-  constructor(){
+  constructor() {
     super()
 
     this.logOut = e => {
@@ -23,14 +22,11 @@ class SignOut extends Component {
     }
   }
 
-
-  render(){
-    return(
-      <div>
-        <Button onClick={this.logOut}>
+  render() {
+    return (
+      <span onClick={this.logOut}>
           Sign out
-        </Button>
-      </div>
+      </span>
     )
   }
 }
